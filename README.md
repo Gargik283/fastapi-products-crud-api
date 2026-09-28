@@ -28,7 +28,7 @@ A full **CRUD REST API** built with **FastAPI**, backed by JSON-file storage and
 
 | Browse, filter & paginate | Create, update & delete |
 |---|---|
-| ![Dashboard - browse products](screenshots/dashboard-browse.png) | ![Dashboard - create product](screenshots/dashboard-create.png) |
+| ![Dashboard - browse products](https://github.com/Gargik283/fastapi-products-crud-api/blob/main/screenshots/dashboard_browse.png) | ![Dashboard - create product](screenshots/dashboard-create.png) |
 
 ---
 
