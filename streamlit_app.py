@@ -1,4 +1,5 @@
 import json
+import os
 import requests
 import streamlit as st
 
@@ -15,8 +16,12 @@ st.set_page_config(
 # Sidebar — backend connection
 # --------------------------------------------------------------------------
 st.sidebar.header("⚙️ Backend Connection")
-BASE_URL = st.sidebar.text_input("FastAPI base URL", value="http://127.0.0.1:8000")
-st.sidebar.caption("Run the API locally with:\n\n`uvicorn main:app --reload`")
+DEFAULT_API_URL = os.getenv("API_URL", "https://fastapi-products-crud-api-2.onrender.com")
+BASE_URL = st.sidebar.text_input("FastAPI base URL", value=DEFAULT_API_URL).rstrip("/")
+st.sidebar.caption(
+    "Hosted on Render (free tier) - the first request may take up to a minute to wake up.\n\n"
+    "To run locally: `uvicorn backend.app.main:app --reload` and set the URL to `http://127.0.0.1:8000`"
+)
 
 st.title("🛍️ FastAPI Products Dashboard")
 st.caption(f"Backend: `{BASE_URL}`")
