@@ -1298,5 +1298,18 @@
     "reviews": 777,
     "brand": "ShopEase",
     "in_stock": true
+  },
+  {
+    "id": 101,
+    "name": "Keypad",
+    "description": "",
+    "category": "Electronics",
+    "brand": "Apple",
+    "price": 800.0,
+    "currency": "INR",
+    "stock": 9,
+    "rating": 3.8,
+    "reviews": 8,
+    "in_stock": true
   }
 ]
