@@ -6,7 +6,19 @@
 ![Pydantic](https://img.shields.io/badge/Pydantic-v2-E92063?logo=pydantic&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-A full **CRUD REST API** built with **FastAPI**, backed by JSON-file storage and validated with **Pydantic v2**, paired with an interactive **Streamlit dashboard** for testing every endpoint without leaving the browser — no Postman required.
+### 🔗 Live Links
+
+| | |
+|---|---|
+| 🖥️ **Live Dashboard** | [fastapi-appucts-crud-api.streamlit.app](https://fastapi-appucts-crud-api-o7l6lscmhrn2mcr8jocjpf.streamlit.app/) |
+| 📘 **Live API Docs (Swagger UI)** | [fastapi-products-crud-api-2.onrender.com/docs](https://fastapi-products-crud-api-2.onrender.com/docs) |
+| 💻 **Source Code** | [github.com/Gargik283/fastapi-products-crud-api](https://github.com/Gargik283/fastapi-products-crud-api) |
+
+> ⏳ The API runs on Render's free tier, so the **first request after a period of inactivity can take 30–60 seconds** while the server wakes up. Data changes made on the live demo are temporary and reset when the server restarts.
+
+---
+
+A full **CRUD REST API** built with **FastAPI**, backed by JSON-file storage and validated with **Pydantic v2**, paired with an interactive **Streamlit dashboard** for testing every endpoint without leaving the browser — no Postman required. Both parts are deployed: the API on **Render** and the dashboard on **Streamlit Community Cloud**.
 
 > Built as a hands-on backend engineering project: request validation, query-based filtering/sorting/pagination, and a clean service-layer separation between routes, schemas, and data access.
 
@@ -18,8 +30,6 @@ A full **CRUD REST API** built with **FastAPI**, backed by JSON-file storage and
 |---|---|
 | ![Dashboard - browse products](screenshots/dashboard-browse.png) | ![Dashboard - create product](screenshots/dashboard-create.png) |
 
-*(Add your own screenshots to a `screenshots/` folder and update the paths above.)*
-
 ---
 
 ## ✨ Features
@@ -30,9 +40,10 @@ A full **CRUD REST API** built with **FastAPI**, backed by JSON-file storage and
 - **Pagination** via `limit` / `offset` query parameters
 - **Partial updates** — `PUT` only overwrites the fields you send
 - **Schema validation** with Pydantic v2 (price > 0, rating 0–5, string length limits, etc.)
-- **Auto-generated interactive docs** at `/docs` (Swagger UI) and `/openapi.json`
+- **Auto-generated interactive docs** at [`/docs`](https://fastapi-products-crud-api-2.onrender.com/docs) (Swagger UI) and `/openapi.json`
 - **Dependency-injected** data loading (`Depends`) for clean, testable route handlers
 - **Streamlit control panel** to exercise every route visually — health check, browse, lookup, create, update, delete
+- **Deployed end to end** — API on Render, dashboard on Streamlit Community Cloud
 
 ---
 
@@ -46,6 +57,7 @@ A full **CRUD REST API** built with **FastAPI**, backed by JSON-file storage and
 | Storage | JSON file (`data/products.json`) |
 | Config | python-dotenv |
 | Dashboard / API client | Streamlit + Requests |
+| Deployment | Render (API), Streamlit Community Cloud (dashboard) |
 
 ---
 
@@ -54,27 +66,32 @@ A full **CRUD REST API** built with **FastAPI**, backed by JSON-file storage and
 ```
 .
 ├── backend/
+│   ├── __init__.py
 │   └── app/
+│       ├── __init__.py
+│       ├── main.py               # FastAPI app & route definitions
 │       ├── schema/
+│       │   ├── __init__.py
 │       │   └── product.py        # Pydantic models (Product, ProductUpdate)
 │       └── services/
+│           ├── __init__.py
 │           └── products.py       # Data access layer (load/save/CRUD helpers)
 ├── data/
 │   └── products.json             # Persisted product records
-├── main.py                       # FastAPI app & route definitions
 ├── streamlit_app.py              # Interactive dashboard for the API
-├── .env                          # BASE_URL config
-└── requirements.txt
+├── requirements.txt
+├── .gitignore
+└── LICENSE
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Run It Locally
 
 ### 1. Clone & install
 ```bash
-git clone https://github.com/Gargik283/<repo-name>.git
-cd <repo-name>
+git clone https://github.com/Gargik283/fastapi-products-crud-api.git
+cd fastapi-products-crud-api
 pip install -r requirements.txt
 ```
 
@@ -86,7 +103,7 @@ BASE_URL=data/products.json
 
 ### 3. Run the API
 ```bash
-uvicorn main:app --reload
+uvicorn backend.app.main:app --reload
 ```
 Visit **http://127.0.0.1:8000/docs** for the interactive Swagger UI.
 
@@ -95,11 +112,13 @@ In a second terminal:
 ```bash
 streamlit run streamlit_app.py
 ```
-Set the backend URL in the sidebar (defaults to `http://127.0.0.1:8000`) and start testing.
+The sidebar defaults to the hosted API. To use your local server instead, set the URL to `http://127.0.0.1:8000`.
 
 ---
 
 ## 🔌 API Reference
+
+Base URL: `https://fastapi-products-crud-api-2.onrender.com`
 
 | Method | Endpoint | Description |
 |---|---|---|
@@ -144,12 +163,13 @@ POST /products
 
 ## 👤 About
 
-Built by **Gargi** — Data Analyst transitioning from an Electronics & VLSI background, focused on SQL, Python, Power BI, and backend fundamentals.
+Built by **Gargi Kundu** — Data Analyst transitioning from an Electronics & VLSI background, focused on SQL, Python, Power BI, and backend fundamentals.
 
-- GitHub: [github.com/Gargik283](https://github.com/Gargik283)
+- 💼 LinkedIn: [linkedin.com/in/gargi-kundu](https://www.linkedin.com/in/gargi-kundu/)
+- 🐙 GitHub: [github.com/Gargik283](https://github.com/Gargik283)
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
